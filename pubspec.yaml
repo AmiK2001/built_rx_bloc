@@ -1,6 +1,6 @@
 name: built_rx_bloc
 description: Bloc pattern implementation using Built Value for state and RxDart.
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/AmiK2001/built_rx_bloc
 
 environment:
