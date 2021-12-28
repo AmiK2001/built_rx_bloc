@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:built_rx_bloc/utils/extensions/string_extensions.dart';
-import 'package:built_rx_bloc/utils/log.dart';
 import 'package:built_value/built_value.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract class Bloc<TState extends Built<TState, TStateBuilder>,
+abstract class BuiltRxBloc<TState extends Built<TState, TStateBuilder>,
     TStateBuilder extends Builder<TState, TStateBuilder>> {
-  Bloc(this._initialState, {this.debug = false}) {
-    log.d("constructor");
-
+  BuiltRxBloc(this._initialState, {this.debug = false}) {
     addState(_initialState);
 
     init();
@@ -41,15 +38,9 @@ abstract class Bloc<TState extends Built<TState, TStateBuilder>,
     if (!_stateSubject.isClosed) {
       _stateSubject.add(state);
     }
-
-    if (debug) log.d("$stateTag.addState\nstate: $state");
   }
 
   void updateState(Function(TStateBuilder b) updates) {
-    if (debug) {
-      log.d("$stateTag.updateState\npreviousState: $state");
-    }
-
     addState(state.rebuild(updates));
   }
 
