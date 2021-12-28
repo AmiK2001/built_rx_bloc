@@ -6,3 +6,7 @@
 
 * Remove built_collection dependency
 * Set minSdk to 2.12.0
+
+## 0.0.3
+
+* Remove logger and flutter dependencies
